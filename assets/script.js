@@ -1,81 +1,60 @@
-//alert("working")
+// alert("working")
 // start  button
 // on click start timer and display question with choices
 
 var start_btn = document.getElementById("start_button");
 var display_q = document.getElementById("display_question");
 var display_timer = document.getElementById("stop_watch");
-var timer = 30;
+var stop_watch = 30;
 var user_choice = "";
+
 var questions = {q1:["question 1","a","b","c"],q2:["question2","a",'b','c']}
-var answer = {a1:"a",a2:'b'}
 
-start_btn.addEventListener("click", function (){
-     
-    alert("start")
-    for (let i = 0; i < word.length; i++) {
-    // console.log(underScore);
+var answers = {a1:"a",a2:'b'}
 
-    var score_timer = setInterval(function () {
-    timer--;
-    console.log(timer);
-    display_timer.textContent = timer;
-    if (timer === 0) {
-        clearInterval(interval);
+start_btn.addEventListener("click", start_timer)
+
+
+  function start_timer() {
+
+    // alert("start")
+    
+    var score_time = setInterval(function () {
+
+        stop_watch--;
         
-    };
-
-    if(user_choice !== answer){
-        //clearInterval(interval)
-        timer = timer - 25;
-        console.log(wrong);
-    };
-    if(user_choice === answer){
-        //clearInterval(interval)
-        timer = timer + 25;
-        console.log(correct);
-    };
+        // console.log(stop_watch);
+        
+        display_timer.textContent = stop_watch;
+        
+        if (stop_watch === 0) {
+            clearInterval(score_time);
+            console.log('times up')
+        };
     }, 1000);
 });
 
-// document.body.addEventListener("keyup", function (e) {
-//     // console.log(e.key);
-//     var userinput = e.key;
-//     for (let i = 0; i < word.length; i++) {
-//         if (word[i] === userinput) {
-//             // console.log(word[i],i);
-//           var newStr = underScore.split("");
-//           newStr[i] = userinput;
-//           console.log(newStr);
-//           underScore= newStr.join("");
+function check_answer(){
 
-//           displayWord.textContent = newStr.join("");
-//             // console.log(underScore[i]);
-//         }
+    if(user_choice !== answers){
+        //clearInterval(interval)
+        stop_watch = stop_watch - 25;
+        console.log('wrong');
+    };
+    
+    if(user_choice === answers){
+        //clearInterval(interval)
+        stop_watch = stop_watch + 25;
+        console.log('correct');
+    };
+};
 
-//     }
-// })
-
-
-// var questions = [
-//     {
-//         q: "",
-//         options: ["", "", "", ""],
-//         correct: ""
-//     },
-//     {
-//         q: "",
-//         options: ["", "", "", ""],
-//         correct: ""
-//     }
-// ]
-
-//Click on Start button
-  // start the timer
-  // display the first question with options 
-    // check if index < questions.length
-    //create a function with index as an argument
-  //each option is a button with click event on it // may be use event.target with matches function
+/////Click on Start button
+///// start the timer
+// display the first question with options 
+//create a function to check user choice
+//each option is a button with click event on it 
+// may be use event.target with matches function
 
 //Stopt the timer
   // if timer = 0;
