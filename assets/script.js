@@ -7,33 +7,36 @@ var display_q = document.getElementById("display_question");
 var display_timer = document.getElementById("stop_watch");
 var timer = 30;
 var user_choice = "";
-var questions = {q1:["question 1","a","b","c","ans"],q2:["question2","a",'b','c','ans']}
+var questions = {q1:["question 1","a","b","c"],q2:["question2","a",'b','c']}
+var answer = {a1:"a",a2:'b'}
 
-start_btn.addEventListener("click", function () {
+start_btn.addEventListener("click", function (){
      
-  alert("start")
-     for (let i = 0; i < word.length; i++) {
-     
-        // console.log(underScore);
+    alert("start")
+    for (let i = 0; i < word.length; i++) {
+    // console.log(underScore);
+
+    var score_timer = setInterval(function () {
+    timer--;
+    console.log(timer);
+    display_timer.textContent = timer;
+    if (timer === 0) {
+        clearInterval(interval);
         
-        display_q.textContent = underScore;
+    };
 
-        var interval = setInterval(function () {
-            timer--;
-            // console.log(timer);
-            display_timer.textContent = timer;
-            if (timer === 0) {
-                clearInterval(interval);
-                losses++;
-                displayWord.textContent = "Game over";
-            }
-            if(underScore === word){
-                clearInterval(interval)
-                wins++;
-                console.log("win");
-            }
-        }, 1000);
-})
+    if(user_choice !== answer){
+        //clearInterval(interval)
+        timer = timer - 25;
+        console.log(wrong);
+    };
+    if(user_choice === answer){
+        //clearInterval(interval)
+        timer = timer + 25;
+        console.log(correct);
+    };
+    }, 1000);
+});
 
 // document.body.addEventListener("keyup", function (e) {
 //     // console.log(e.key);
