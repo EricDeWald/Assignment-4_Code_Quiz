@@ -46,40 +46,55 @@ function create_choice_button(i,){
   one_button.textContent=questions[current_question][i]
   one_button.onclick = check_answer
   one_button.name = i-1
+  one_button.id = "button_choice"
   display_q.appendChild(one_button)
 }
 
 function check_answer(event){
   if(event.target.textContent !== answers[parseInt(event.target.name)]){
-      //clearInterval(interval)
       stop_watch = stop_watch - 25;
       var truthy = document.createElement('h2')
       truthy.textContent="Wrong"
       display_q.appendChild(truthy)
   }
   else{
-      //clearInterval(interval)
       stop_watch = stop_watch + 25;
       var truthy = document.createElement('h2')
       truthy.textContent="Correct"
       display_q.appendChild(truthy)
   };
-  
-  //clear_question();
   current_question++
   console.log(current_question)
   question_box();
   grab_chioces();
+  //clear out displayed question
+  clear_question();
+  // if (current_question =2){
+  //   end_Game()
+  // };
+  
 };
 
-// if (current_question =2){
-//   end_Game()
-// };
+
 function clear_question(){
+  console.log("clear")  
   var question_item = document.querySelector("h1")
+  var button_item1 = document.getElementById("button_choice")
   question_item.textContent=""
-  display_q.appendChild('question_box')
-  
+  button_item1.remove();
+  var button_item1 = document.getElementById("button_choice")
+  button_item1.remove();
+  var button_item1 = document.getElementById("button_choice")
+  button_item1.remove();
+
+  var correct_timer=3;
+  var reply_time = setInterval(function () {
+    correct_timer--;
+    if (correct_timer <= 0) {
+      var truthy = document.createElement('h2')
+      truthy.remove();
+    };
+  }, 1000);
 };
 
 function end_Game(){
