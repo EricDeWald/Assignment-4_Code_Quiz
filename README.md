@@ -14,5 +14,5 @@ then display if answer is correct or not.
 
 I then clear the question and buttons away.
 
-in the end game fuction I store the time localy to then use for the scoreboard site that i will atuomatically link to.
+The end game fuction stores the time localy to be used for the scoreboard site that I will atuomatically link to.
 
