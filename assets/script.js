@@ -51,6 +51,15 @@ function create_choice_button(i,){
 }
 
 function check_answer(event){
+  var correct_timer=3;
+  setInterval(function () {
+    correct_timer--;
+    if (correct_timer = 0) {
+      var truthy = document.createElement('h2')
+      truthy.remove();
+    };
+  }, 1000);
+
   if(event.target.textContent !== answers[parseInt(event.target.name)]){
       stop_watch = stop_watch - 25;
       var truthy = document.createElement('h2')
@@ -69,12 +78,11 @@ function check_answer(event){
   grab_chioces();
   //clear out displayed question
   clear_question();
-  // if (current_question =2){
-  //   end_Game()
-  // };
+  if (current_question =2){
+    end_Game()
+  };
   
 };
-
 
 function clear_question(){
   console.log("clear")  
@@ -86,25 +94,16 @@ function clear_question(){
   button_item1.remove();
   var button_item1 = document.getElementById("button_choice")
   button_item1.remove();
-
-  var correct_timer=3;
-  var reply_time = setInterval(function () {
-    correct_timer--;
-    if (correct_timer <= 0) {
-      var truthy = document.createElement('h2')
-      truthy.remove();
-    };
-  }, 1000);
 };
 
 function end_Game(){
   //store stop_watch time at end of game localy to a list
+  var score = stop_watch
+  localStorage.setItem("score", stop_watch);
   //go to second html
   console.log("end game")
   console.log(stop_watch)
 };
-
-
 /////Click on Start button
 ///// start the timer
 //// display the first question with options 
