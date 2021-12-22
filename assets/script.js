@@ -55,30 +55,40 @@ function check_answer(event){
       stop_watch = stop_watch - 25;
       var truthy = document.createElement('h2')
       truthy.textContent="Wrong"
+      display_q.appendChild(truthy)
   }
   else{
       //clearInterval(interval)
       stop_watch = stop_watch + 25;
       var truthy = document.createElement('h2')
       truthy.textContent="Correct"
+      display_q.appendChild(truthy)
   };
-  if (current_question < 2){
-    end_Game()
-  }
-  else{
+  
+  //clear_question();
   current_question++
+  console.log(current_question)
   question_box();
   grab_chioces();
-  }
+};
+
+// if (current_question =2){
+//   end_Game()
+// };
+function clear_question(){
+  var question_item = document.querySelector("h1")
+  question_item.textContent=""
+  display_q.appendChild('question_box')
+  
 };
 
 function end_Game(){
+  //store stop_watch time at end of game localy to a list
   //go to second html
-  console.log(score_time)
-}
-function score_board(){
+  console.log("end game")
+  console.log(stop_watch)
+};
 
-}
 
 /////Click on Start button
 ///// start the timer
