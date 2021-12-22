@@ -66,6 +66,7 @@ function check_answer(event){
       truthy.textContent="Wrong"
       display_q.appendChild(truthy)
   }
+  
   else{
       stop_watch = stop_watch + 25;
       var truthy = document.createElement('h2')
@@ -73,16 +74,25 @@ function check_answer(event){
       display_q.appendChild(truthy)
   };
   current_question++
+ 
   console.log(current_question)
+  if (current_question == 2){
+    end_Game()
+  }
+
+  else{
   question_box();
   grab_chioces();
   //clear out displayed question
   clear_question();
-  if (current_question =2){
-    end_Game()
   };
-  
+
+ 
 };
+
+
+
+
 
 function clear_question(){
   console.log("clear")  
@@ -97,12 +107,14 @@ function clear_question(){
 };
 
 function end_Game(){
-  //store stop_watch time at end of game localy to a list
-  var score = stop_watch
-  localStorage.setItem("score", stop_watch);
-  //go to second html
   console.log("end game")
   console.log(stop_watch)
+  clear_question()
+  //store stop_watch time at end of game localy to a list
+  var score = stop_watch
+  localStorage.setItem("score", score;
+  //go to second html
+  
 };
 /////Click on Start button
 ///// start the timer
@@ -115,12 +127,12 @@ function end_Game(){
   //// if timer <= 0;
   // if user finished the quiz
 
-//Find out if user clicked option is correct or not
-  //if correct : display message (for certain time period)
-  //wrong : display msg for certain time period)
+////Find out if user clicked option is correct or not
+  ////if correct : display message (for certain time period)
+  ////wrong : display msg for certain time period)
   // calculate the score (but don't display) and change the timer accordingly
-// index++
-//display the next question
+//// index++
+////isplay the next question
 
 //once user finished with last question
  // stop timer
