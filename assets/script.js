@@ -112,7 +112,7 @@ function end_Game(){
   clear_question()
   //store stop_watch time at end of game localy to a list
   var score = stop_watch
-  localStorage.setItem("score", score;
+  localStorage.setItem("score", score);
   //go to second html
   
 };
