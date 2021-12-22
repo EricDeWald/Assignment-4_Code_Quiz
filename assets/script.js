@@ -7,57 +7,88 @@ var display_q = document.getElementById("display_question");
 var display_timer = document.getElementById("stop_watch");
 var stop_watch = 30;
 var user_choice = "";
+var current_question = 0
+var questions = [["What does css stand for?","a: cascading style sheet","b: cool system syntax","c: computer style sheet"],["What html tag links your style.js to your html?","a: <link>",'b: <script>','c; <style>']]
 
-var questions = {q1:["question 1","a","b","c"],q2:["question2","a",'b','c']}
+var answers = ["a: cascading style sheet",'b: <script>']
 
-var answers = {a1:"a",a2:'b'}
-
-start_btn.addEventListener("click", start_timer)
-
-
-  function start_timer() {
-
-    // alert("start")
-    
-    var score_time = setInterval(function () {
-
-        stop_watch--;
-        
-        // console.log(stop_watch);
-        
-        display_timer.textContent = stop_watch;
-        
-        if (stop_watch === 0) {
-            clearInterval(score_time);
-            console.log('times up')
-        };
-    }, 1000);
+start_btn.addEventListener("click", function(){
+start_timer();
+question_box();
+grab_chioces();
 });
 
-function check_answer(){
-
-    if(user_choice !== answers){
-        //clearInterval(interval)
-        stop_watch = stop_watch - 25;
-        console.log('wrong');
+function start_timer() {
+  var score_time = setInterval(function () {
+    stop_watch--;
+    display_timer.textContent = stop_watch;
+    if (stop_watch <= 0) {
+        clearInterval(score_time);
+        console.log('times up')
     };
-    
-    if(user_choice === answers){
-        //clearInterval(interval)
-        stop_watch = stop_watch + 25;
-        console.log('correct');
-    };
+  }, 1000);
 };
+
+function question_box(){
+  var question = document.createElement("h1")
+  question.textContent=questions[current_question][0]
+  display_q.appendChild(question)
+};
+
+function grab_chioces(){
+  for(i=0; i < 3;i++){
+    create_choice_button(i+1)
+  }
+}
+
+function create_choice_button(i,){
+  var one_button = document.createElement("button")
+  one_button.textContent=questions[current_question][i]
+  one_button.onclick = check_answer
+  one_button.name = i-1
+  display_q.appendChild(one_button)
+}
+
+function check_answer(event){
+  if(event.target.textContent !== answers[parseInt(event.target.name)]){
+      //clearInterval(interval)
+      stop_watch = stop_watch - 25;
+      var truthy = document.createElement('h2')
+      truthy.textContent="Wrong"
+  }
+  else{
+      //clearInterval(interval)
+      stop_watch = stop_watch + 25;
+      var truthy = document.createElement('h2')
+      truthy.textContent="Correct"
+  };
+  if (current_question < 2){
+    end_Game()
+  }
+  else{
+  current_question++
+  question_box();
+  grab_chioces();
+  }
+};
+
+function end_Game(){
+  //go to second html
+  console.log(score_time)
+}
+function score_board(){
+
+}
 
 /////Click on Start button
 ///// start the timer
-// display the first question with options 
-//create a function to check user choice
-//each option is a button with click event on it 
-// may be use event.target with matches function
+//// display the first question with options 
+////create a function to check user choice
+////each option is a button with click event on it 
+//// may be use event.target with matches function
 
-//Stopt the timer
-  // if timer = 0;
+//Stop the timer
+  //// if timer <= 0;
   // if user finished the quiz
 
 //Find out if user clicked option is correct or not
