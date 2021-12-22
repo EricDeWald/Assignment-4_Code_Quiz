@@ -113,7 +113,7 @@ function end_Game(){
   //store stop_watch time at end of game localy to a list
   var score = stop_watch
   localStorage.setItem("score", score);
-  window.location.href="indx2.html"
+  window.location.href="index2.html"
   
   //go to second html
   
